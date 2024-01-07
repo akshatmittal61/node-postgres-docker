@@ -9,3 +9,6 @@ Content-Type: application/json
   "message": "Hello World!",
   "delay": 1000
 }
+
+###
+GET http://localhost:1337/api/v1/posts
