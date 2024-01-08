@@ -1,0 +1,36 @@
+FROM node:20
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Add environment variables
+ARG NODE_ENV
+ARG PORT
+ARG POSTGRES_USER
+ARG POSTGRES_PASSWORD
+ARG POSTGRES_HOST
+ARG POSTGRES_PORT
+ARG POSTGRES_NAME
+
+ENV NODE_ENV $NODE_ENV
+ENV PORT $PORT
+ENV POSTGRES_USER $POSTGRES_USER
+ENV POSTGRES_PASSWORD $POSTGRES_PASSWORD
+ENV POSTGRES_HOST $POSTGRES_HOST
+ENV POSTGRES_PORT $POSTGRES_PORT
+ENV POSTGRES_NAME $POSTGRES_NAME
+
+# Bundle app source
+COPY . .
+
+# Expose port 3000
+EXPOSE 3000
+
+# Run the app
+CMD [ "npm", "start" ]

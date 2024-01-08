@@ -2,12 +2,14 @@ import { config } from "dotenv";
 
 config();
 
-export const PORT = 1337;
+export const PORT = process.env.PORT || 1337;
 
 export const db = {
-	user: process.env.DB_USER,
-	password: process.env.DB_PASSWORD,
-	host: process.env.DB_HOST,
-	port: process.env.DB_PORT,
-	name: process.env.DB_NAME,
+	user: process.env.POSTGRES_USER,
+	password: process.env.POSTGRES_PASSWORD,
+	host: process.env.POSTGRES_HOST,
+	port: process.env.POSTGRES_PORT,
+	name: process.env.POSTGRES_NAME,
 };
+
+console.log(PORT, db);

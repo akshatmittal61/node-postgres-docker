@@ -1,0 +1,31 @@
+version: '3'
+services:
+  # db:
+  #   image: postgres
+  #   env_file:
+  #     - .env
+  # app:
+  #   image: node-postgres-docker-trial
+  #   ports:
+  #     - 13000:3000
+  #   env_file:
+  #     - .env
+
+  # combine thw above two containers
+  app:
+    container_name: node-postgres-docker-trial
+    build: .
+    ports:
+      - 13000:3000
+    env_file:
+      - .env
+    depends_on:
+      - db
+  db:
+    image: postgres
+    env_file:
+      - .env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data: {}
